@@ -7,11 +7,11 @@
 	* Database Username and password, which has privilage to create a database. 
 	
 
-	This code has been tested on a Ubuntu 12.04 machine, and its workin perfectly.
+	This code has been tested on a Ubuntu 12.04 machine, and its working perfectly.
 	
-	I have used Nginx as a webserver and MySql for database. you need php also to for the wordpress to run. Need not worry installtion of all the package have been taken care in the script. 
+	I have used Nginx as a webserver and MySql for database. you need php also to run  wordpress. Need not worry installtion of all the package have been taken care in the script. 
 
-	You just need to download the script give execution permission and wala you can run it. If you find any problem feel free to contact me on dipinthomas2003@gmial.com. 
+	You just need to download the script give execution permission and wala ;)  you can run it. If you find any problem feel free to write to me on dipinthomas2003@gmial.com. 
 
 
-TIP : update your machine before you run this script. 	
+NOTE : update your machine before you run this script. 	
