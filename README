@@ -1,0 +1,17 @@
+							rtCamp Assignment
+
+
+	Hi friends the code in this repository can be used to automatically install a wordpress on your local machin. Only following information are required before you can run this file. 
+
+ 	* Root password of the system.
+	* Database Username and password, which has privilage to create a database. 
+	
+
+	This code has been tested in a Ubuntu 12.04 machine, and its workin perfectly.
+	
+	I have used Nginx as a webserver and MySql for database. you need php also to for the wordpress to run. Need not worry installtion of all the package have been taken care in the script. 
+
+	You just need to download the script give execution permission and wala you can run it. If you find any problem feel free to contact me on dipinthomas2003@gmial.com. 
+
+
+TIP : update your machine before you run this script. 	
