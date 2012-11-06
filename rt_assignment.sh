@@ -8,12 +8,12 @@ echo -e "deb http://ftp.riken.jp/Linux/ubuntu/ oneiric universe
 deb http://ftp.riken.jp/Linux/ubuntu/ oneiric-updates universe
 
 deb http://ftp.riken.jp/Linux/ubuntu/ oneiric multiverse
-deb http://ftp.riken.jp/Linux/ubuntu/ oneiric-updates multiverse">> /etc/apt/sources.list
+deb http://ftp.riken.jp/Linux/ubuntu/ oneiric-updates multiverse">> /etc/apt/sources.list 1> /dev/null
 
 #========================================================================================
 #TASK 1 -  check nginx, mysql and php is installed, if not present install it. 
 
-rt_var=`id -u $who`  #cheking if root user or not
+rt_var=`id -u`  #cheking if root user or not
 
 if test $rt_var -eq 0;then
 
