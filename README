@@ -1,4 +1,4 @@
-							rtCamp Assignment
+					rtCamp Assignment
 
 
 	Hi friends the code in this repository can be used to automatically install a wordpress site  on your local machin. Only following information are required before you can run this file. 
@@ -9,9 +9,58 @@
 
 	This code has been tested on a Ubuntu 12.04 machine, and its working perfectly.
 	
-	I have used Nginx as a webserver and MySql for database. you need php also to run  wordpress. Need not worry installtion of all the package have been taken care in the script. 
+	I have used Nginx as a webserver and MySql for database. you need php also to run  wordpress. Need not worry installtion of all the package have been taken care in the script.
 
-	You just need to download the script give execution permission and wala ;)  you can run it. If you find any problem feel free to write to me on dipinthomas2003@gmial.com. 
+	You just need to download the script give execution permission and wala ;)  you can run it. If you find any problem feel free to write to me on dipinthomas2003@gmail.com. 
 
 
-NOTE : update your machine before you run this script. 	
+#===========================================================================
+
+EXPERIENCE WORKING ON UBUNTU 11.10 and 12.04 
+
+
+1) Broked Prackages installation. 
+
+	When i started writing this script, main problem was getting all the required packages installed properly. For example for Nginx to render php files it requires a extra package called php5-fpm. finding latest version of Mysql-server and nginx was also a trouble for me.
+
+	Downloaded the LATEST.TAR.GZ file was missing wp-config-example.php file which is very much important for us.
+
+	 Then after lot of trial and error, i started working on 12.04 from 11.10 Ubuntu. In 12.04 i found i am getting the packages verys soon. So i replaced the source.list content of 11.10 machine and updated it once (The reason why i added the source.list entry in the script is because any version users might want to run this script and this should work on all debian based linux machine). And i started using riken server for reliablity. 
+
+
+	After the updation following error might occur for you. 
+
+2) 502 Bad Gateway
+	
+	Need not worry this is also because of php5-fpm, wants this to be installed to render the files. 
+
+3) PHP installation seems to be missing the mysql extention required.
+	
+	One package called php5-mysql is a module used to connect mysql database directly with php scripts. We need it as wordpress is full of php. If this is missing the above error occurs. 
+
+	This package is located on /etc/php5/cli/conf.d/ if you find only pdo.ini, then this is this package needs to be downloaded. 
+
+NOTE : You might need to restart the system on come cases. If varies and cannot be predicted. 
+
+4) php-fastCGI parameters & PHP-FPM (fastCGI process Managment) CGI(Comman Gateway Interface)
+
+	CGI - Is standard way how a web browser send web user request to web server and then to answer back user request. CGI was slow, an extention added to CGI is fastCGI.
+	
+	Nginx supports php only by fastCGI. CGI is build on process concept, for every new request new process is made by CGI which add overheads. By using fastCGI which uses a pool of processes and reuse them. This is one main reason to  make php fast in NgInx. 
+
+	Feature of fastCGI:
+				*Fast
+				*Secure
+				*Suit able for high trafic sites.
+
+
+#===========================================================================================
+
+	These were the few error which i felt like writing, i did go through many other errors also. You can easly slove the error if at all it occurs. The main point is the we need to keep the machine updated always. 
+
+#==========================================================================================
+
+
+
+
+	
