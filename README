@@ -46,7 +46,7 @@ EXPERIENCE WORKING ON UBUNTU 11.10 and 12.04
 
 	This package is located on /etc/php5/cli/conf.d/ if you find only pdo.ini, then this is this package needs to be downloaded. 
 
-NOTE : You might need to restart the system on come cases. If varies and cannot be predicted. 
+NOTE : You might need to restart the system on come cases. If varies and cannot be predicted. After the completion of the script if you are getting this error then reboot the system. I am sure i will work. 
 
 4) php-fastCGI parameters & PHP-FPM (fastCGI process Managment) CGI(Comman Gateway Interface)
 
