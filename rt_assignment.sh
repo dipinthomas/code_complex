@@ -67,8 +67,11 @@ cd /var/www/$dom_name
 echo -e "server {\n\tlisten 80;
 		 \n\tserver_name $dom_name;
  		\n\troot /var/www/$dom_name/;
-		\n\tindex index.html index.php;
+		\n\t index index.php;
 		\n
+
+	location / {
+			try_files `$uri $uri`/ /index.php?q=`$uri`&`$args`;		
 
          \n\tlocation ~ \.php$ {
              	        \nfastcgi_pass 127.0.0.1:9000;
@@ -89,7 +92,7 @@ echo -e "Config file made" # Final OUTPUT
  echo "File getting downloaded"
 
 wget http://wordpress.org/latest.tar.gz
-tar -xvf lat*
+tar -xvf lat* 1> /dev.null
 cp -r wordpress/* .
 
 #=======================================================================================================
