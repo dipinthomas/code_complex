@@ -39,7 +39,7 @@ echo -e "Checking the packages"
 ##TASK 2 & 3: Asking for a new domain name  & Make host file entry for give domain name
 #
 #It is expected to run the script as root
-#
+
 for ((i=0 ; i<=10 ; i++ ))
  	do
 		echo -e " \nPlease enter your prefered domain name\n"     # TASK 2
@@ -64,26 +64,26 @@ for ((i=0 ; i<=10 ; i++ ))
 mkdir /var/www/$dom_name
 cd /var/www/$dom_name 
 
-echo -e "server {\n\tlisten 80;
-		 \n\tserver_name $dom_name;
- 		\n\troot /var/www/$dom_name/;
-		\n\t index index.php;
-		\n
-
-	location / {
-			try_files "'$'"uri "'$'"uri/ /index.php?q="'$'"uri&"'$'"args;		
-		}
-
-         \n\tlocation ~ \.php$ {
-             	        \nfastcgi_pass 127.0.0.1:9000;
-                        \ninclude /etc/nginx/fastcgi_params;}
-		}" >> /etc/nginx/sites-available/$dom_name
-
-
-ln -s /etc/nginx/sites-available/$dom_name /etc/nginx/sites-enabled/$dom_name   #creating a soft link
-
-/etc/init.d/nginx reload 1> /dev/null #Reloading 
-
+#echo -e "server {\n\tlisten 80;
+#		 \n\tserver_name $dom_name;
+# 		\n\troot /var/www/$dom_name/;
+#		\n\t index index.php;
+#		\n
+#
+#	location / {
+#			try_files "'$'"uri "'$'"uri/ /index.php?q="'$'"uri&"'$'"args;		
+#		}
+#
+#         \n\tlocation ~ \.php$ {
+#             	        \nfastcgi_pass 127.0.0.1:9000;
+#                        \ninclude /etc/nginx/fastcgi_params;}
+#		}" >> /etc/nginx/sites-available/$dom_name
+#
+#
+#ln -s /etc/nginx/sites-available/$dom_name /etc/nginx/sites-enabled/$dom_name   #creating a soft link
+#
+#/etc/init.d/nginx reload 1> /dev/null #Reloading 
+#
 echo -e "Config file made" # Final OUTPUT
 ##=================================================================================================================
 #
@@ -92,29 +92,30 @@ echo -e "Config file made" # Final OUTPUT
 #
 # echo "File getting downloaded"
 #
-wget http://wordpress.org/latest.tar.gz
-tar -xvf lat* 1> /dev.null
-cp -r wordpress/* .
+#wget http://wordpress.org/latest.tar.gz
+#tar -xvf lat* 1> /dev.null
+#cp -r wordpress/* .
 
+cp -r /home/sdrc/Downloads/wordpress/* /var/www/$dom_name/
 #=======================================================================================================
 #
 #TASK 6: make proper database
 #
 #
-echo -e "\n Log into mysql database, please provide username and password with previlage"
-read db_user
-read db_pass
-
-mysqladmin -u $db_user -p$db_pass CREATE $dom_name"_db"   #mysql db creation
-
-db_check=`echo $?`
-
-	if test $db_check -eq 0; then
-
-		echo -e "\nDatabase has been created thankyou"
-	else
-		echo -e "\n\tSORRY, worng password or username. please try again later"		
-	fi
+#echo -e "\n Log into mysql database, please provide username and password with previlage"
+#read db_user
+#read db_pass
+#
+#mysqladmin -u $db_user -p$db_pass CREATE $dom_name"_db"   #mysql db creation
+#
+#db_check=`echo $?`
+#
+#	if test $db_check -eq 0; then
+#
+#		echo -e "\nDatabase has been created thankyou"
+#	else
+#		echo -e "\n\tSORRY, worng password or username. please try again later"		
+#	fi
 
 #=============================================================================================================
 #
@@ -130,7 +131,24 @@ sed -i "s/database_name_here/${dom_name}_db/g" wp-config.php
 sed -i "s/username_here/${db_user}/g" wp-config.php
 sed -i "s/password_here/${db_pass}/g" wp-config.php
 
+#===========================================================================================================
+#
+#Adding Salt 
+#
+#
+echo -e "Please Enter a Safe Salt"
+read salt
 
+ for i in {1..8..1}
+        do
+
+                sed -i "s/put your unique phrase here/${salt}/g" wp-config.php
+
+
+        done
+
+
+#
 #============================================================================================================
 
 else 
