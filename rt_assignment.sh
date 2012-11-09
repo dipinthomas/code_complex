@@ -90,15 +90,11 @@ echo -e "Config file made" # Final OUTPUT
 #
 ##TASK 5 :Download the file from wordpress site to the domain name entered. 
 
- #echo "File getting downloaded"
+echo "File getting downloaded"
 
 wget http://wordpress.org/latest.tar.gz
 tar -xvf lat* 1> /dev.null
 cp -r wordpress/* .
-
-#cp -r /home/sdrc/Downloads/wordpress/* /var/www/$dom_name/
-
-
 
 #=======================================================================================================
 #
@@ -138,19 +134,30 @@ sed -i "s/password_here/${db_pass}/g" wp-config.php
 #Adding Salt 
 #
 #
-
+echo -e "Extra salt has been added"
  for i in {1..8..1}
         do
-
-                sed -i "s/put your unique phrase here/hmbsdmnsdfjnaspoiuytrasghjklkjnbvcxcvbnmoijhgf/g" wp-config.php
-
-
-
+              sed -i "s/put your unique phrase here/hmbsdmnsdfjnaspoiuytrasghjklkjnbvcxcvbnmoijhgf/g" wp-config.php
         done
 
+#
+#=======================================================================================================
+#
+#Cleaning Temp files 
 
+
+echo -e "\nRemoving partial packages"
+
+apt-get autoclean
+
+echo -e "\nRemoving Unnecessary packages"
+
+apt-get autoremove 1> /dev/null
+
+echo -e "\n The script is Successfully completed please one the site in browser"
 #
 #============================================================================================================
+#
 
 else 
 	echo " Sorry you need to be a root user to run this script"
