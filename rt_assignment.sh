@@ -67,7 +67,7 @@ cd /var/www/$dom_name
 echo -e "server {\n\tlisten 80;
 		 \n\tserver_name $dom_name;
  		\n\troot /var/www/$dom_name/;
-		\n\t index index.php;
+		\n\t index index.php index.html;
 		\n
 
 	location / {
@@ -140,6 +140,11 @@ echo -e "Extra salt has been added"
               sed -i "s/put your unique phrase here/hmbsdmnsdfjnaspoiuytrasghjklkjnbvcxcvbnmoijhgf/g" wp-config.php
         done
 
+
+#
+#======================================================================================================
+#Turing Server Signature off
+sed -i "s/#server_tokens off/server_tokens off/g" /etc/nginx/nginx.conf
 #
 #=======================================================================================================
 #
